@@ -4,7 +4,7 @@ import type { Page } from "../App";
 import { METRO_CITIES } from "../components/Navbar";
 import "./Admin.css";
 
-const API = "http://localhost:5000";
+const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
 interface Props { setPage: (p: Page) => void; }
 
 export default function Admin({ setPage }: Props) {

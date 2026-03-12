@@ -3,7 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import type { Page } from "../App";
 import "./Booking.css";
 
-const API = "http://localhost:5000";
+const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
 interface Props { setPage: (p: Page) => void; selectedCycle: any; }
 
 const STATUS_STEPS: Record<string, { label: string; icon: string; step: number }> = {

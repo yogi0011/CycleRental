@@ -4,7 +4,7 @@ import type { Page } from "../App";
 import { METRO_CITIES } from "../components/Navbar";
 import "./AddCycle.css";
 
-const API = "http://localhost:5000";
+const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
 interface Props { setPage: (p: Page) => void; }
 
 export default function AddCycle({ setPage }: Props) {
@@ -26,7 +26,7 @@ export default function AddCycle({ setPage }: Props) {
     try {
       const res = await fetch(`${API}/cycles`, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${user.token}` },
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${user!.token}` },
         body: JSON.stringify({ model: form.model, price: Number(form.price), location: shopCity, image: form.image || null }),
       });
       const data = await res.json();

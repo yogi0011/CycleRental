@@ -3,7 +3,7 @@ import type { Page } from "../App";
 import { METRO_CITIES } from "../components/Navbar";
 import "./Cycles.css";
 
-const API = "http://localhost:5000";
+const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
 interface Props { setPage: (p: Page) => void; setSelectedCycle: (c: any) => void; }
 
 function StarDisplay({ value, count }: { value: number; count?: number }) {

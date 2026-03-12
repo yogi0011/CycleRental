@@ -14,7 +14,7 @@ import ShopDashboard from "./pages/ShopDashboard";
 import "./App.css";
 
 export type Page = "home" | "auth" | "cycles" | "booking" | "addcycle" | "admin" | "shopdash";
-const API = "http://localhost:5000";
+const API =  import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 let socket: Socket | null = null;
 

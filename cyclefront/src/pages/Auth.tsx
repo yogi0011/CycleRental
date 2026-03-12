@@ -4,7 +4,7 @@ import type { Page } from "../App";
 import { METRO_CITIES } from "../components/Navbar";
 import "./Auth.css";
 
-const API = "http://localhost:5000";
+const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
 type Mode = "login" | "register" | "forgot" | "reset";
 
 interface Props { setPage: (p: Page) => void; }
