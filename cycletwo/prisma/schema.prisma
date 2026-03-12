@@ -1,0 +1,108 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Admin {
+  id            Int            @id @default(autoincrement())
+  name          String
+  email         String         @unique
+  password      String
+  notifications Notification[]
+}
+
+model Shopkeeper {
+  id            Int            @id @default(autoincrement())
+  name          String
+  email         String         @unique
+  password      String
+  location      String
+  address       String         @default("")
+  phone         String
+  resetToken    String?
+  resetExpiry   DateTime?
+  cycles        Cycle[]
+  ratings       ShopkeeperRating[]
+  notifications Notification[]
+}
+
+model User {
+  id            Int            @id @default(autoincrement())
+  name          String
+  email         String         @unique
+  password      String
+  phone         String         @default("")
+  resetToken    String?
+  resetExpiry   DateTime?
+  bookings      Booking[]
+  notifications Notification[]
+}
+
+model Cycle {
+  id           Int              @id @default(autoincrement())
+  model        String
+  price        Float
+  location     String
+  available    Boolean          @default(true)
+  image        String?
+  shopkeeperId Int
+  shopkeeper   Shopkeeper       @relation(fields: [shopkeeperId], references: [id])
+  bookings     Booking[]
+  ratings      CycleRating[]
+}
+
+model Booking {
+  id            Int      @id @default(autoincrement())
+  startTime     DateTime
+  endTime       DateTime
+  status        String   @default("pending")
+  deliveredAt   DateTime?
+  bookedAt      DateTime @default(now())
+  totalAmount   Float    @default(0)
+  userId        Int
+  cycleId       Int
+  user          User     @relation(fields: [userId], references: [id])
+  cycle         Cycle    @relation(fields: [cycleId], references: [id])
+  cycleRating      CycleRating?
+  shopkeeperRating ShopkeeperRating?
+}
+
+model Notification {
+  id           Int         @id @default(autoincrement())
+  message      String
+  type         String
+  read         Boolean     @default(false)
+  createdAt    DateTime    @default(now())
+  bookingId    Int?
+  userId       Int?
+  shopkeeperId Int?
+  adminId      Int?
+  user         User?       @relation(fields: [userId], references: [id])
+  shopkeeper   Shopkeeper? @relation(fields: [shopkeeperId], references: [id])
+  admin        Admin?      @relation(fields: [adminId], references: [id])
+}
+
+model CycleRating {
+  id        Int     @id @default(autoincrement())
+  rating    Int
+  comment   String?
+  bookingId Int     @unique
+  cycleId   Int
+  userId    Int
+  booking   Booking @relation(fields: [bookingId], references: [id])
+  cycle     Cycle   @relation(fields: [cycleId], references: [id])
+}
+
+model ShopkeeperRating {
+  id           Int        @id @default(autoincrement())
+  rating       Int
+  comment      String?
+  bookingId    Int        @unique
+  shopkeeperId Int
+  userId       Int
+  booking      Booking    @relation(fields: [bookingId], references: [id])
+  shopkeeper   Shopkeeper @relation(fields: [shopkeeperId], references: [id])
+}

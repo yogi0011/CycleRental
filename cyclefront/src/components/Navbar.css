@@ -1,0 +1,129 @@
+.navbar {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--nav);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-inner {
+  height: 58px;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+}
+
+.navbar-brand {
+  display: flex; align-items: center; gap: 9px;
+  cursor: pointer; flex-shrink: 0;
+}
+
+.brand-mark {
+  width: 32px; height: 32px; background: var(--accent);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+}
+
+.brand-text { font-family: var(--font-head); font-size: 18px; color: var(--text); }
+
+.navbar-links { display: flex; align-items: center; gap: 2px; flex: 1; }
+
+.nav-link {
+  background: none; border: none; cursor: pointer;
+  padding: 7px 12px; border-radius: 8px;
+  font-family: var(--font-body); font-size: 14px; font-weight: 500;
+  color: var(--text2); transition: var(--transition); white-space: nowrap;
+}
+.nav-link:hover { background: var(--bg3); color: var(--text); }
+.nav-link.active { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.nav-add { color: var(--accent) !important; font-weight: 600 !important; }
+.nav-admin { color: #7c3aed !important; font-weight: 600 !important; }
+
+.navbar-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+/* Notifications */
+.notif-wrap { position: relative; }
+
+.notif-btn {
+  width: 36px; height: 36px; border-radius: 9px;
+  border: 1px solid var(--border); background: var(--bg2);
+  cursor: pointer; color: var(--text2);
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition); position: relative;
+}
+.notif-btn:hover { background: var(--bg3); color: var(--text); }
+
+.notif-badge {
+  position: absolute; top: -5px; right: -5px;
+  background: var(--accent); color: white;
+  font-size: 10px; font-weight: 700; min-width: 17px; height: 17px;
+  border-radius: 99px; display: flex; align-items: center; justify-content: center;
+  padding: 0 4px; border: 2px solid var(--bg);
+  animation: badgePop 0.3s ease;
+}
+@keyframes badgePop { 0% { transform: scale(0); } 70% { transform: scale(1.2); } 100% { transform: scale(1); } }
+
+.notif-dropdown {
+  position: absolute; top: calc(100% + 10px); right: 0;
+  width: 320px; max-height: 420px;
+  overflow: hidden; display: flex; flex-direction: column;
+  z-index: 300;
+  animation: fadeUp 0.2s ease;
+}
+
+.notif-head {
+  padding: 14px 16px; border-bottom: 1px solid var(--border);
+  font-size: 13px; font-weight: 600; color: var(--text);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.notif-all-read { font-size: 11px; color: var(--accent); font-weight: 500; }
+
+.notif-list { overflow-y: auto; flex: 1; }
+
+.notif-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px 16px; border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+.notif-item:last-child { border-bottom: none; }
+.notif-item:hover { background: var(--bg2); }
+.notif-item.unread { background: var(--accent-soft); }
+
+.notif-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: transparent; flex-shrink: 0; margin-top: 5px;
+}
+.notif-item.unread .notif-dot { background: var(--accent); }
+
+.notif-content { flex: 1; }
+.notif-msg { font-size: 13px; color: var(--text); line-height: 1.5; }
+.notif-time { font-size: 11px; color: var(--text3); margin-top: 3px; }
+
+.notif-empty { padding: 32px 16px; text-align: center; font-size: 13px; color: var(--text3); }
+
+.notif-backdrop { position: fixed; inset: 0; z-index: 250; }
+
+/* User area */
+.user-area { display: flex; align-items: center; gap: 8px; }
+
+.user-chip {
+  display: flex; align-items: center; gap: 7px;
+  padding: 4px 12px 4px 4px; border-radius: 99px;
+  border: 1px solid var(--border); background: var(--bg2);
+  font-size: 13px; font-weight: 500; color: var(--text);
+}
+
+.user-dot {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  font-weight: 700; font-size: 11px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.role-tag {
+  background: var(--accent); color: white;
+  font-size: 10px; font-weight: 700;
+  padding: 2px 7px; border-radius: 99px;
+}
+
+@media (max-width: 768px) {
+  .navbar-links { display: none; }
+  .user-chip span:not(.role-tag) { display: none; }
+  .notif-dropdown { right: -60px; width: 290px; }
+}

@@ -1,0 +1,109 @@
+.auth-page { min-height: calc(100vh - 58px); display: flex; }
+
+.auth-left {
+  flex: 1; background: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  padding: 48px; position: relative; overflow: hidden;
+}
+
+.auth-left::before {
+  content: ''; position: absolute;
+  width: 350px; height: 350px; background: rgba(255,255,255,0.07);
+  border-radius: 50%; top: -100px; right: -100px;
+}
+.auth-left::after {
+  content: ''; position: absolute;
+  width: 260px; height: 260px; background: rgba(255,255,255,0.05);
+  border-radius: 50%; bottom: -80px; left: -80px;
+}
+
+.auth-left-inner {
+  position: relative; z-index: 1;
+  max-width: 360px; display: flex; flex-direction: column; gap: 22px;
+}
+
+.al-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-head); font-size: 18px; color: #fff;
+}
+
+.brand-mark-lg {
+  width: 38px; height: 38px; background: rgba(255,255,255,0.2);
+  border-radius: 9px; display: flex; align-items: center; justify-content: center;
+}
+
+.al-heading {
+  font-family: var(--font-head);
+  font-size: clamp(28px, 3.5vw, 40px);
+  color: #fff; line-height: 1.15;
+}
+
+.al-sub { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+
+.al-cities { display: flex; flex-direction: column; gap: 8px; }
+.al-city-label { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+.al-city-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.al-city {
+  background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9);
+  padding: 3px 10px; border-radius: 99px; font-size: 12px; font-weight: 500;
+}
+.al-city-more { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); }
+
+.al-list { display: flex; flex-direction: column; gap: 9px; }
+.al-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.85); font-size: 14px; }
+.al-check {
+  width: 19px; height: 19px; background: rgba(255,255,255,0.2);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: white; font-weight: 700; flex-shrink: 0;
+}
+
+/* Right */
+.auth-right {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  padding: 48px 24px; background: var(--bg2);
+}
+
+.auth-box { width: 100%; max-width: 420px; overflow: hidden; }
+
+.auth-tabs { display: flex; border-bottom: 1px solid var(--border); }
+.auth-tab {
+  flex: 1; padding: 14px; background: none;
+  border: none; border-bottom: 2px solid transparent;
+  cursor: pointer; font-family: var(--font-body);
+  font-size: 14px; font-weight: 500; color: var(--text3);
+  transition: var(--transition); margin-bottom: -1px;
+}
+.auth-tab.on { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+
+.auth-back {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px; color: var(--text3);
+  cursor: pointer; transition: var(--transition);
+}
+.auth-back:hover { color: var(--accent); }
+
+.auth-form { padding: 26px; display: flex; flex-direction: column; gap: 13px; }
+
+.af-title {
+  font-family: var(--font-head);
+  font-size: 22px; color: var(--text); margin-bottom: 2px;
+}
+
+.role-row { display: flex; gap: 7px; }
+.role-btn {
+  flex: 1; padding: 9px; border-radius: 9px;
+  border: 1.5px solid var(--border); background: var(--bg);
+  color: var(--text2); font-family: var(--font-body);
+  font-size: 12px; font-weight: 500; cursor: pointer; transition: var(--transition);
+}
+.role-btn.on { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+
+.auth-switch { text-align: center; font-size: 13px; color: var(--text2); }
+.auth-switch span { color: var(--accent); font-weight: 600; cursor: pointer; }
+
+@media (max-width: 768px) {
+  .auth-left { display: none; }
+  .auth-right { padding: 24px 16px; }
+  .auth-box { box-shadow: none; border: none; }
+}
