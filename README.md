@@ -4,7 +4,10 @@ Cycle rental platform — book a cycle, ride anywhere.
 
 ## Project structure
 
-git config user.name
+Rentalcycle/
+├── cyclefront/   React + TypeScript + Vite frontend
+└── cycletwo/     Node + Express + TypeScript + Prisma backend
+
 ## Running locally
 
 ### Backend
@@ -24,5 +27,4 @@ npm install
 npm run dev
 ```
 Runs on http://localhost:3000
-
 
