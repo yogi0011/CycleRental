@@ -4,7 +4,7 @@ Cycle rental platform — book a cycle, ride anywhere.
 
 ## Project structure
 
-git config user.name
+
 ## Running locally
 
 ### Backend
