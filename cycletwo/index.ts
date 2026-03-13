@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 5000;
 initSocket(httpServer);
 
 app.use(cors({
-  origin: ["http://localhost:3000", "http://localhost:5173", process.env.FRONTEND_URL || ""],
+  origin: ["http://localhost:3000", "http://localhost:5173", "https://cycle-rental.vercel.app", process.env.FRONTEND_URL || ""],
   credentials: true,
 }));
 app.use(express.json());
