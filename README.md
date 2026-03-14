@@ -28,3 +28,6 @@ npm run dev
 ```
 Runs on http://localhost:3000
 
+preview of the app
+https://cycle-rental-git-main-yogi0011s-projects.vercel.app/
+
