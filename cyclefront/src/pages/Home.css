@@ -27,8 +27,17 @@
 .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
 .hero-cta { padding: 12px 22px; font-size: 15px; }
 .hero-cities { display: flex; flex-wrap: wrap; gap: 6px; }
-.hero-city { background: var(--bg3); color: var(--text3); padding: 3px 10px; border-radius: 99px; font-size: 12px; border: 1px solid var(--border); }
-
+.hero-city { 
+  background: var(--accent-soft); 
+  color: var(--accent); 
+  padding: 4px 12px; 
+  border-radius: 99px; 
+  font-size: 12px; 
+  border: 1px solid rgba(232, 93, 38, 0.2);
+  font-weight: 500;
+  transition: var(--transition);
+}
+.hero-city:hover { background: var(--accent); color: white; }
 .hero-card-wrap { flex-shrink: 0; }
 .hero-card { width: 248px; padding: 22px; animation: cardFloat 3.5s ease-in-out infinite; }
 @keyframes cardFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
