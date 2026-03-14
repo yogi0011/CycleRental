@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import type { Page } from "../App";
 import "./Home.css";
+import cyclistImg from "../cyclist.png";
 
 const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
 interface Props { setPage: (p: Page) => void; }
@@ -103,8 +104,7 @@ export default function Home({ setPage }: Props) {
                 <span className="hc-price">₹49<span>/hr</span></span>
               </div>
               <div className="hc-visual">
-                <img src="/src/cyclist.png" alt="cyclist" style={{ width: "140px", filter: "drop-shadow(0 8px 16px rgba(232,93,38,0.2))" }} />
-              </div>
+                <img src={cyclistImg} alt="cyclist" style={{ width: "140px", filter: "drop-shadow(0 8px 16px rgba(232,93,38,0.2))" }} />              </div>
               <div className="hc-info">
                 <div className="hc-name">Mountain Pro X1</div>
                 <div className="hc-loc">📍 Hyderabad · ⭐ 4.8</div>
@@ -131,7 +131,7 @@ export default function Home({ setPage }: Props) {
         </div>
       </div>
 
-      
+
       <section className="features-sec">
         <div className="wrap">
           <div className="sec-head">
@@ -150,7 +150,7 @@ export default function Home({ setPage }: Props) {
         </div>
       </section>
 
-      
+
       <section className="cta-sec">
         <div className="wrap cta-inner">
           <h2 className="cta-h2">Ready to ride?</h2>
