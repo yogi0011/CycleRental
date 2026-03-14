@@ -18,7 +18,7 @@ function useCountdown(endTime: string | null) {
       const m = Math.floor((diff % 3600000) / 60000);
       const s = Math.floor((diff % 60000) / 1000);
       setUrgent(diff < 900000);
-      setTimeLeft(`${h>0?`${h}h `:""}${m}m ${s}s`);
+      setTimeLeft(`${h > 0 ? `${h}h ` : ""}${m}m ${s}s`);
     };
     tick(); const id = setInterval(tick, 1000);
     return () => clearInterval(id);
@@ -26,15 +26,15 @@ function useCountdown(endTime: string | null) {
   return { timeLeft, urgent };
 }
 
-const CITIES = ["Mumbai","Delhi","Bangalore","Hyderabad","Chennai","Kolkata","Pune","Ahmedabad"];
+const CITIES = ["Mumbai", "Delhi", "Bangalore", "Hyderabad", "Chennai", "Kolkata", "Pune", "Ahmedabad"];
 
 const features = [
-  { icon:"⚡", t:"Book in 30 seconds", d:"No queues, no paperwork. Find and confirm instantly." },
-  { icon:"📍", t:"Find nearby cycles", d:"Browse available cycles across your city." },
-  { icon:"💰", t:"Pay per minute", d:"Exact pricing down to the minute. No rounding up." },
-  { icon:"⭐", t:"Verified ratings", d:"Real reviews from real riders on every cycle." },
-  { icon:"🛠️", t:"Well maintained", d:"Every cycle is checked and serviced regularly." },
-  { icon:"📱", t:"Easy returns", d:"Drop off at the shop — shopkeeper confirms done." },
+  { icon: "⚡", t: "Book in 30 seconds", d: "No queues, no paperwork. Find and confirm instantly." },
+  { icon: "📍", t: "Find nearby cycles", d: "Browse available cycles across your city." },
+  { icon: "💰", t: "Pay per minute", d: "Exact pricing down to the minute. No rounding up." },
+  { icon: "⭐", t: "Verified ratings", d: "Real reviews from real riders on every cycle." },
+  { icon: "🛠️", t: "Well maintained", d: "Every cycle is checked and serviced regularly." },
+  { icon: "📱", t: "Easy returns", d: "Drop off at the shop — shopkeeper confirms done." },
 ];
 
 export default function Home({ setPage }: Props) {
@@ -50,19 +50,19 @@ export default function Home({ setPage }: Props) {
         if (!Array.isArray(data)) return;
         const active = data.find((b: any) => b.status === "active");
         setActiveBooking(active || null);
-      }).catch(() => {});
+      }).catch(() => { });
   }, [user]);
 
   const { timeLeft, urgent } = useCountdown(activeBooking?.deliveredAt
     ? new Date(new Date(activeBooking.deliveredAt).getTime() +
-        (new Date(activeBooking.endTime).getTime() - new Date(activeBooking.startTime).getTime())).toISOString()
+      (new Date(activeBooking.endTime).getTime() - new Date(activeBooking.startTime).getTime())).toISOString()
     : null);
 
   return (
     <div className="home fade-in">
       {/* Active ride timer */}
       {activeBooking && (
-        <div className={`timer-banner ${urgent?"urgent":""}`}>
+        <div className={`timer-banner ${urgent ? "urgent" : ""}`}>
           <div className="wrap timer-inner">
             <div className="timer-left">
               <div className="timer-icon">🚲</div>
@@ -96,38 +96,34 @@ export default function Home({ setPage }: Props) {
             </div>
           </div>
 
-          <div className="hero-card-wrap fade-up" style={{ animationDelay:"0.12s" }}>
+          <div className="hero-card-wrap fade-up" style={{ animationDelay: "0.12s" }}>
             <div className="hero-card card">
               <div className="hc-header">
                 <span className="badge badge-green">● Available now</span>
                 <span className="hc-price">₹49<span>/hr</span></span>
               </div>
               <div className="hc-visual">
-                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/>
-                  <path d="M15 6a1 1 0 0 0-1-1h-4l-3 9h10l-2-8z"/><path d="M12 6l2 8"/>
-                </svg>
+                <img src="/src/cyclist.png" alt="cyclist" style={{ width: "140px", filter: "drop-shadow(0 8px 16px rgba(232,93,38,0.2))" }} />
               </div>
               <div className="hc-info">
                 <div className="hc-name">Mountain Pro X1</div>
                 <div className="hc-loc">📍 Hyderabad · ⭐ 4.8</div>
               </div>
-              <button className="btn btn-primary" style={{width:"100%",marginTop:10}} onClick={() => setPage("cycles")}>Book now</button>
+              <button className="btn btn-primary" style={{ width: "100%", marginTop: 10 }} onClick={() => setPage("cycles")}>Book now</button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats */}
       <div className="stats-bar">
         <div className="wrap stats-inner">
           {[
-            { n:"500+", l:"Cycles", color:"#e85d26", bg:"#fff3ee" },
-            { n:"2,000+", l:"Riders", color:"#2563eb", bg:"#eff6ff" },
-            { n:"10+", l:"Cities", color:"#16a34a", bg:"#f0fdf4" },
-            { n:"4.8", l:"Avg rating", color:"#d97706", bg:"#fffbeb" },
+            { n: "500+", l: "Cycles", color: "#e85d26", bg: "#fff3ee" },
+            { n: "2,000+", l: "Riders", color: "#2563eb", bg: "#eff6ff" },
+            { n: "10+", l: "Cities", color: "#16a34a", bg: "#f0fdf4" },
+            { n: "4.8", l: "Avg rating", color: "#d97706", bg: "#fffbeb" },
           ].map(s => (
-            <div key={s.l} className="stat" style={{"--stat-color":s.color,"--stat-bg":s.bg} as any}>
+            <div key={s.l} className="stat" style={{ "--stat-color": s.color, "--stat-bg": s.bg } as any}>
               <div className="stat-n">{s.n}</div>
               <div className="stat-l">{s.l}</div>
             </div>
@@ -135,7 +131,7 @@ export default function Home({ setPage }: Props) {
         </div>
       </div>
 
-      {/* Features */}
+      
       <section className="features-sec">
         <div className="wrap">
           <div className="sec-head">
@@ -143,8 +139,8 @@ export default function Home({ setPage }: Props) {
             <h2 className="sec-h2">Everything for a smooth ride</h2>
           </div>
           <div className="features-grid">
-            {features.map((f,i) => (
-              <div key={i} className="feat-card card fade-up" style={{animationDelay:`${0.06*i}s`}}>
+            {features.map((f, i) => (
+              <div key={i} className="feat-card card fade-up" style={{ animationDelay: `${0.06 * i}s` }}>
                 <div className="feat-icon">{f.icon}</div>
                 <h3 className="feat-t">{f.t}</h3>
                 <p className="feat-d">{f.d}</p>
@@ -154,7 +150,7 @@ export default function Home({ setPage }: Props) {
         </div>
       </section>
 
-      {/* CTA */}
+      
       <section className="cta-sec">
         <div className="wrap cta-inner">
           <h2 className="cta-h2">Ready to ride?</h2>
